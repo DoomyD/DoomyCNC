@@ -55,6 +55,7 @@ net spindle-pwm     => parport.0.pin-16-out
 net xenable         => parport.0.pin-17-out
 net min-home-x      <= parport.0.pin-10-in-not
 net min-home-y      <= parport.0.pin-11-in-not
+net max-home-z      <= parport.0.pin-12-in-not
 net probe-in        <= parport.0.pin-13-in
 net spindle-index   <= parport.0.pin-15-in
 
@@ -97,6 +98,8 @@ net zpos-fb stepgen.2.position-fb => joint.2.motor-pos-fb
 net zstep <= stepgen.2.step
 net zdir <= stepgen.2.dir
 net zenable joint.2.amp-enable-out => stepgen.2.enable
+net max-home-z => joint.2.home-sw-in
+# net max-home-z => joint.2.neg-lim-sw-in
 
 net estop-out <= iocontrol.0.user-enable-out
 net estop-out => iocontrol.0.emc-enable-in
