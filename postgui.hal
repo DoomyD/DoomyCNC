@@ -1,0 +1,20 @@
+# Spindle output speed
+net spindle-rpm-out vfdmod.spindle.rpm-out => pyvcp.rpm-out
+net spindle-at-speed <= pyvcp.at-speed
+
+# Communication
+net pyvcp-is-connected vfdmod.rs485.is-connected => pyvcp.is-connected
+net pyvcp-error-count vfdmod.rs485.error-count => pyvcp.error-count
+net pyvcp-last-error vfdmod.rs485.last-error => pyvcp.last-error
+
+# Fault reset!
+# Because of ordinary button click is too short, it's necessary
+# to prolong fault reset output in active state for a while.
+loadrt oneshot names=fault-reset-delay
+addf fault-reset-delay servo-thread
+# Two seconds delay should be enough.
+setp fault-reset-delay.width 2
+net pyvcp-fault-reset-short pyvcp.fault-reset => fault-reset-delay.in
+net pyvcp-fault-reset-long fault-reset-delay.out => vfdmod.control.fault-reset
+
+# User parameters

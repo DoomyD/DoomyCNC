@@ -1,3 +1,21 @@
 # Include your custom HAL commands here
 # This file will not be overwritten when you run stepconf again
 
+# loadusr -W vfdmod --debug vfd-config.ini
+loadrt toggle count=1
+addf toggle.0 servo-thread
+
+net power-vaccume toggle.0.in parport.0.pin-14-out
+
+loadusr -W vfdmod --debug vfd-config.ini
+
+net spindle-speed-cmd => vfdmod.spindle.rpm-in
+net spindle-at-speed <= vfdmod.spindle.at-speed
+
+# net spindle.0.forward => vfdmod.control.run-forward
+net spindle-cw => vfdmod.control.run-forward
+
+# net spindle.0.reverse => vfdmod.control.run-reverse
+net spindle-ccw => vfdmod.control.run-reverse
+
+

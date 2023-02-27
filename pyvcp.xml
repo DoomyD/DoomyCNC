@@ -1,0 +1,50 @@
+<pyvcp>
+<labelframe text="vfd-config">
+
+    <label text="Output RPM:"/>
+    <bar halpin="rpm-out" max_="24000"/>
+
+    <table flexible_rows="[1]" flexible_columns="[2]">
+    <tablerow/>
+        <label text="Spindle at speed"/>
+        <led halpin="at-speed" size="12" on_color="green" off_color="red"/>
+    <tablerow/>
+        <label text="'\nParameters:'"/>
+
+    <!-- User parameters start here -->
+    <!-- User parameters end -->
+
+    <tablerow/>
+        <label text="'\nRS485:'"/>
+    <tablerow/>
+        <label text="Is connected"/>
+        <led halpin="is-connected" size="12" on_color="green" off_color="red"/>
+    <tablerow/>
+        <label text="Error count"/>
+        <s32 halpin="error-count"/>
+    <tablerow/>
+        <label text="Last error"/>
+        <s32 halpin="last-error"/>
+    </table>
+
+    <button>
+        <halpin>"fault-reset"</halpin>
+        <text>"FAULT RESET"</text>
+    </button>
+    <!-- <button>
+        <halpin>"halui.flood.on"</halpin>
+        <text>"Turn Flood On"</text>
+    </button>
+    <button>
+        <halpin>"halui.flood.off"</halpin>
+        <text>"Turn Flood OFF"</text>
+    </button> -->
+</labelframe>
+
+<image name='vac-on' file='vac-on.png'/>
+<image name='vac-off' file='intro.png'/>
+<vbox>
+    <image_bit halpin='selectimage' images='vac-on vac-off'/>
+</vbox>
+
+</pyvcp>

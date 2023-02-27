@@ -6,11 +6,9 @@ loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EM
 loadrt hal_parport cfg="0 out"
 setp parport.0.reset-time 4000
 loadrt stepgen step_type=0,0,0
-loadrt pwmgen output_type=1
 
 addf parport.0.read base-thread
 addf stepgen.make-pulses base-thread
-addf pwmgen.make-pulses base-thread
 addf parport.0.write base-thread
 addf parport.0.reset base-thread
 
@@ -18,21 +16,15 @@ addf stepgen.capture-position servo-thread
 addf motion-command-handler servo-thread
 addf motion-controller servo-thread
 addf stepgen.update-freq servo-thread
-addf pwmgen.update servo-thread
 
-net spindle-cmd-rpm => pwmgen.0.value
-net spindle-on <= spindle.0.on => pwmgen.0.enable
-net spindle-pwm <= pwmgen.0.pwm
-setp pwmgen.0.pwm-freq 100.0
-setp pwmgen.0.scale 1166.66666667
-setp pwmgen.0.offset 0.114285714286
-setp pwmgen.0.dither-pwm true
-net spindle-cmd-rpm     <= spindle.0.speed-out
-net spindle-cmd-rpm-abs <= spindle.0.speed-out-abs
-net spindle-cmd-rps     <= spindle.0.speed-out-rps
-net spindle-cmd-rps-abs <= spindle.0.speed-out-rps-abs
+net spindle-on <= spindle.0.on
+net spindle-speed-cmd     <= spindle.0.speed-out
+net spindle-rpm-out => spindle.0.speed-in
 net spindle-at-speed    => spindle.0.at-speed
+
 net spindle-cw <= spindle.0.forward
+net spindle-ccw <= spindle.0.reverse
+
 
 net probe-in => motion.probe-input
 
@@ -50,14 +42,16 @@ net zdir            => parport.0.pin-07-out
 net ystep           => parport.0.pin-08-out
 setp parport.0.pin-08-out-reset 1
 net ydir            => parport.0.pin-09-out
-net spindle-cw      => parport.0.pin-14-out
-net spindle-pwm     => parport.0.pin-16-out
 net xenable         => parport.0.pin-17-out
 net min-home-x      <= parport.0.pin-10-in-not
 net min-home-y      <= parport.0.pin-11-in-not
 net max-home-z      <= parport.0.pin-12-in-not
 net probe-in        <= parport.0.pin-13-in
 net spindle-index   <= parport.0.pin-15-in
+net spindle-cooling   <= parport.0.pin-16-out
+sets spindle-cooling 1
+# net vaccume   <= parport.0.pin-14-out
+# sets vaccume 1
 
 setp stepgen.0.position-scale [JOINT_0]SCALE
 setp stepgen.0.steplen 1
