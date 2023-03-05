@@ -2,10 +2,7 @@
 # This file will not be overwritten when you run stepconf again
 
 # loadusr -W vfdmod --debug vfd-config.ini
-loadrt toggle count=1
-addf toggle.0 servo-thread
 
-net power-vaccume toggle.0.in parport.0.pin-14-out
 
 loadusr -W vfdmod --debug vfd-config.ini
 

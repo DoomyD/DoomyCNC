@@ -25,12 +25,13 @@
     <tablerow/>
         <label text="Last error"/>
         <s32 halpin="last-error"/>
-    </table>
-
+    <tablerow/>
     <button>
         <halpin>"fault-reset"</halpin>
         <text>"FAULT RESET"</text>
     </button>
+    </table>
+
     <!-- <button>
         <halpin>"halui.flood.on"</halpin>
         <text>"Turn Flood On"</text>
@@ -39,12 +40,37 @@
         <halpin>"halui.flood.off"</halpin>
         <text>"Turn Flood OFF"</text>
     </button> -->
+
 </labelframe>
 
-<image name='vac-on' file='vac-on.png'/>
+<labelframe text="Other Devices / Machines">
+<image name='pump' file='pump.png'/>
+<image name='vac' file='vac.png'/>
+
+    <table flexible_rows="[1]" flexible_columns="[2]">
+        <tablerow/>
+            <button>
+                <halpin>"spindle-cooling-toggle"</halpin>
+                <text>"Spindle Water Pump Toggle"</text>
+            </button>
+            <image_bit halpin='selectimage' images='pump'/>
+                <led halpin="spindle-cooling-status" size="20" on_color="red" off_color="green"/>
+        <tablerow/>
+            <button>
+                <halpin>"vaccume-toggle"</halpin>
+                <text>"Vaccume Toggle"</text>
+            </button>
+                <image_bit halpin='selectimage2' images='vac'/>
+                <led halpin="vaccume-status" size="20" on_color="red" off_color="green"/>
+    </table>
+
+</labelframe>
+<!-- <image name='vac-on' file='vac-on.png'/>
 <image name='vac-off' file='intro.png'/>
 <vbox>
     <image_bit halpin='selectimage' images='vac-on vac-off'/>
-</vbox>
+</vbox> -->
+
+
 
 </pyvcp>
