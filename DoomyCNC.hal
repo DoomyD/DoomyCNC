@@ -39,19 +39,13 @@ net zstep           => parport.0.pin-06-out
 setp parport.0.pin-06-out-reset 1
 setp parport.0.pin-07-out-invert 1
 net zdir            => parport.0.pin-07-out
-net ystep           => parport.0.pin-08-out
-setp parport.0.pin-08-out-reset 1
-net ydir            => parport.0.pin-09-out
-net xenable         => parport.0.pin-17-out
 net min-home-x      <= parport.0.pin-10-in-not
 net min-home-y      <= parport.0.pin-11-in-not
 net max-home-z      <= parport.0.pin-12-in-not
-net probe-in        <= parport.0.pin-13-in
-net spindle-index   <= parport.0.pin-15-in
-net spindle-cooling   <= parport.0.pin-16-out
-sets spindle-cooling 1
-net vaccume   <= parport.0.pin-14-out
-sets vaccume 1
+net probe-in        <= parport.0.pin-13-in-not
+setp parport.0.pin-17-out 1
+setp parport.0.pin-14-out 1
+
 
 setp stepgen.0.position-scale [JOINT_0]SCALE
 setp stepgen.0.steplen 1

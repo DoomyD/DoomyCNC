@@ -65,6 +65,56 @@
     </table>
 
 </labelframe>
+
+  <hbox>
+    <relief>RAISED</relief>
+    <bd>5</bd>			
+    <button> 
+      <halpin>"rapid-to-home"</halpin>
+      <text>"Home 0, 0, .5"</text>
+      <font>('Fixed',14)</font>
+      <width>10</width>
+    </button>
+  </hbox>
+
+  <hbox>
+    <relief>RAISED</relief>
+    <bd>5</bd>			
+    <button> 
+      <halpin>"probe-zero"</halpin>
+      <text>"Z Touch Plate"</text>
+      <font>('Fixed',14)</font>
+      <width>10</width>
+    </button>
+    <vbox>
+        <button> 
+        <halpin>"probe-zero-x"</halpin>
+        <text>"X Touch Plate"</text>
+        <font>('Fixed',14)</font>
+        <width>10</width>
+        </button>
+        <button> 
+        <halpin>"probe-zero-xr"</halpin>
+        <text>"Xr Touch Plate"</text>
+        <font>('Fixed',14)</font>
+        <width>10</width>
+        </button>
+    </vbox>
+    <vbox>
+        <button> 
+        <halpin>"probe-zero-y"</halpin>
+        <text>"Y Touch Plate"</text>
+        <font>('Fixed',14)</font>
+        <width>10</width>
+        </button>
+        <button> 
+        <halpin>"probe-zero-yr"</halpin>
+        <text>"Yr Touch Plate"</text>
+        <font>('Fixed',14)</font>
+        <width>10</width>
+        </button>
+    </vbox>
+  </hbox>
 <!-- <image name='vac-on' file='vac-on.png'/>
 <image name='vac-off' file='intro.png'/>
 <vbox>

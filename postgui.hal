@@ -3,7 +3,7 @@ addf toggle.0 servo-thread
 addf toggle.1 servo-thread
 
 net spindle-cooling-toggle toggle.0.in pyvcp.spindle-cooling-toggle
-net spindle-cooling   <= parport.0.pin-16-out toggle.0.out pyvcp.spindle-cooling-status
+net spindle-cooling   <= parport.0.pin-17-out toggle.0.out pyvcp.spindle-cooling-status
 sets spindle-cooling 1
 
 
@@ -31,3 +31,13 @@ net pyvcp-fault-reset-short pyvcp.fault-reset => fault-reset-delay.in
 net pyvcp-fault-reset-long fault-reset-delay.out => vfdmod.control.fault-reset
 
 # User parameters
+
+# set up the rapid to home button
+net remote-rapid-to-home halui.mdi-command-00 <= pyvcp.rapid-to-home
+
+# set up the touch plate button
+net remote-probe-zero halui.mdi-command-01 <= pyvcp.probe-zero
+net remote-probe-zero-x halui.mdi-command-02 <= pyvcp.probe-zero-x
+net remote-probe-zero-xr halui.mdi-command-03 <= pyvcp.probe-zero-xr
+net remote-probe-zero-y halui.mdi-command-04 <= pyvcp.probe-zero-y
+net remote-probe-zero-yr halui.mdi-command-05 <= pyvcp.probe-zero-yr
