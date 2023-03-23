@@ -1,7 +1,7 @@
 # Include your custom HAL commands here
 # This file will not be overwritten when you run stepconf again
 
-# loadusr -W vfdmod --debug vfd-config.ini
+# loadusr -W vfdmod --debug vfd-config.ini # adding the -debug
 
 
 loadusr -W vfdmod --debug vfd-config.ini
